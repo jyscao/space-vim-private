@@ -5,10 +5,9 @@ let g:spacevim_plug_home = '~/.vim/plugged'
 " let g:spacevim_leader = "<\Space>"
 
 " Uncomment the following line to override the local leader key. The default value is comma ','.
-" let g:spacevim_localleader = ','
+let g:spacevim_localleader = '\'
 
-" Enable the existing layers in space-vim.
-" Refer to https://github.com/liuchengxu/space-vim/blob/master/layers/LAYERS.md for all available layers.
+" Enable existing layers in space-vim.
 let g:spacevim_layers = [
       \ 'syntax-checking',
       \ 'better-defaults',
@@ -33,7 +32,13 @@ let g:spacevim_enable_true_color = 1
 " let g:spacevim_nerd_fonts = 1
 
 " Exclude plugins bundled by default with enabled layers
-let g:spacevim_excluded = ['sheerun/vim-polyglot']
+let g:spacevim_excluded = [
+      \ 'sheerun/vim-polyglot',
+      \ 'python-mode/python-mode',
+      \ 'unblevable/quick-scope',
+      \ 'terryma/vim-multiple-cursors',
+      \ 'tpope/vim-surround',
+      \ ]
 
 let g:non_lazy_load = []  " FIXME/TODO: ensure lazy loading system works correctly
 
@@ -42,24 +47,35 @@ let g:non_lazy_load = []  " FIXME/TODO: ensure lazy loading system works correct
 "   Layer 'airline'
 " endif
 
-" Manage your own plugins.
-" Refer to https://github.com/junegunn/vim-plug for more detials.
-function! UserInit()
+function! UserInit() abort
   " Add your own plugin via Plug command.
   Plug 'junegunn/seoul256.vim'
 
+  " foundational plugins
+  " Plug 'vim-jp/vital.vim'
+  " Plug 'kana/vim-submode'
+  " Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-operator-user'
   Plug 'vim-ctrlspace/vim-ctrlspace'
-  Plug 'tpope/vim-eunuch'
-  Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+  " key utilities
+  " Plug 'machakann/vim-sandwich'
+  Plug 'rhysd/vim-operator-surround'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-endwise'
+  Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
+  Plug 'bronson/vim-visual-star-search'
+
+  " language specifics
   Plug 'StanAngeloff/php.vim', {'for': 'php'}
   Plug 'jwalton512/vim-blade', {'for': 'blade'}
 endfunction
 
 " Override the default settings from space-vim as well as adding extras
-function! UserConfig()
-  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
+function! UserConfig() abort
   let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
   let g:CtrlSpaceGlobCommand = "rg --color=never --files"
+
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 endfunction
