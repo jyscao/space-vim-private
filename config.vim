@@ -7,9 +7,11 @@ set smartcase
 set inccommand=split
 set formatprg=par\ -w78s0
 set clipboard=
+" set statusline^=%{coc#status()}
 
 "" autocommands
 autocmd TermOpen term://* startinsert     " enter terminal buffer in Insert instead of Normal mode
+autocmd FileType json syntax match Comment +\/\/.\+$+
 " " TODO: need something like TextYankPre, and trigger outside of Vim to be useful
 " autocmd TextYankPost * call s:backup_unnamedplus(v:event)
 " function s:backup_unnamedplus(ev_dict) abort

@@ -19,11 +19,13 @@ let g:spacevim_layers = [
       \ 'editing',
       \ 'programming',
       \ 'docker',
+      \ 'lsp',
       \ 'git',
       \ 'better-motion',
       \ 'which-key',
       \ ]
-" TODO: layers to review: 'vue', 'ctags', 'fzf', 'lsp', 'tmux', 'github',
+" TODO: layers to review: 'vue', 'ctags', 'fzf', 'tmux', 'github',
+let g:spacevim_lsp_engine = 'coc'
 
 " Uncomment the following line if your terminal(-emulator) supports true colors.
 let g:spacevim_enable_true_color = 1
@@ -63,7 +65,7 @@ function! UserInit() abort
   " Plug 'machakann/vim-sandwich'
   Plug 'rhysd/vim-operator-surround'
   Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-endwise'
+  " Plug 'tpope/vim-endwise'  " conflicts with CoC's inoremap <CR>
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
   Plug 'bronson/vim-visual-star-search'
 
