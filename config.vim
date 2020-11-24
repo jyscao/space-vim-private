@@ -4,22 +4,17 @@
 set showcmd
 set showtabline=1
 set smartcase
+set nowrap        " TODO: set nowrap by default for .md (and others?) files
 set inccommand=split
 set formatprg=par\ -w78s0
-set clipboard=
-" set statusline^=%{coc#status()}
+set clipboard=unnamed
+set cmdheight=1
 
 "" autocommands
 autocmd TermOpen term://* startinsert     " enter terminal buffer in Insert instead of Normal mode
 autocmd FileType json syntax match Comment +\/\/.\+$+
-" " TODO: need something like TextYankPre, and trigger outside of Vim to be useful
-" autocmd TextYankPost * call s:backup_unnamedplus(v:event)
-" function s:backup_unnamedplus(ev_dict) abort
-"   if a:ev_dict.regname ==# '+'
-"     echo a:ev_dict
-"     let @*=@+
-"   endif
-" endfunction
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 
 
@@ -31,8 +26,20 @@ cnoremap jk <Esc>
 tnoremap jk <C-\><C-n>
 
 "" better movements
-nnoremap , gE
-nnoremap ; gEb
+xnoremap H ^
+xnoremap L $
+nnoremap ^ H
+nnoremap $ L
+xnoremap ^ H
+xnoremap $ L
+nnoremap , gEb
+nnoremap ; gE
+xnoremap , gEb
+xnoremap ; gE
+
+"" insert blank lines in normal mode
+nnoremap \| O<Esc>
+nnoremap <CR> o<Esc>
 
 "" window switching
 nnoremap <C-h> <C-w>h
@@ -47,15 +54,28 @@ nnoremap <C-l> <C-w>l
 " Plugin Settings
 
 "" vim-sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-let g:sneak#label = 1
 let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 let g:sneak#s_next = 1
 let g:sneak#absolute_dir = 1
 
-"" vim-operator-surround
-map <silent>sa <Plug>(operator-surround-append)
-map <silent>sd <Plug>(operator-surround-delete)
-map <silent>sr <Plug>(operator-surround-replace)
+"" vim-dadbod set-up
+""" database for work
+function! s:ppdb_define()
+  call system("ip address show vpn_kanguru")
+  if v:shell_error == 0
+    let db_envs = map(readfile(glob("~/work-db.env")), "split(v:val, '=')")
+    let env_map = {}
+    for [env, val] in db_envs
+      let env_map[env] = val
+    endfor
+    let host = env_map['DB_HOST']
+    let user = env_map['DB_USERNAME']
+    let pass = env_map['DB_PASSWORD']
+    let g:ppdb = "mysql://".user.":".pass."@".host
+    echomsg "company DB ready for use"
+  else
+    echomsg "must connect to company VPN to access DB"
+  endif
+endfunction
+command PpdbDefine :call s:ppdb_define()

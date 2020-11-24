@@ -22,9 +22,12 @@ let g:spacevim_layers = [
       \ 'lsp',
       \ 'git',
       \ 'better-motion',
+      \ 'text-align',
       \ 'which-key',
       \ ]
 " TODO: layers to review: 'vue', 'ctags', 'fzf', 'tmux', 'github',
+
+" TODO: try Neovim 0.5's built-in LSP -> neovim/nvim-lspconfig
 let g:spacevim_lsp_engine = 'coc'
 
 " Uncomment the following line if your terminal(-emulator) supports true colors.
@@ -37,12 +40,14 @@ let g:spacevim_enable_true_color = 1
 let g:spacevim_excluded = [
       \ 'sheerun/vim-polyglot',
       \ 'python-mode/python-mode',
-      \ 'unblevable/quick-scope',
       \ 'terryma/vim-multiple-cursors',
       \ 'tpope/vim-surround',
       \ ]
 
-let g:non_lazy_load = []  " FIXME/TODO: ensure lazy loading system works correctly
+" TODO: properly configure lazy/non-lazy load plugins
+" lazy: vim-sandwich, ultisnips,
+" non-lazy: nerdcommenter, vim-move, indentLine(?), vim-better-whitespace
+let g:non_lazy_load = []
 
 " If you want to have more control over the layer, try using Layer command.
 " if g:spacevim.gui
@@ -56,18 +61,19 @@ function! UserInit() abort
   " foundational plugins
   " Plug 'vim-jp/vital.vim'
   " Plug 'kana/vim-submode'
+  " Plug 'kana/vim-operator-user'
   " Plug 'kana/vim-textobj-user'
-  Plug 'kana/vim-operator-user'
   Plug 'vim-ctrlspace/vim-ctrlspace'
-  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " key utilities
-  " Plug 'machakann/vim-sandwich'
-  Plug 'rhysd/vim-operator-surround'
-  Plug 'tpope/vim-eunuch'
-  " Plug 'tpope/vim-endwise'  " conflicts with CoC's inoremap <CR>
-  Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
   Plug 'bronson/vim-visual-star-search'
+  Plug 'machakann/vim-sandwich'
+  Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
+  " Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-dadbod', {'on': 'DB'}
+  " Plug 'kristijanhusak/vim-dadbod-ui'
+  " Plug 'kristijanhusak/vim-dadbod-completion'
 
   " language specifics
   Plug 'StanAngeloff/php.vim', {'for': 'php'}
@@ -80,4 +86,9 @@ function! UserConfig() abort
   let g:CtrlSpaceGlobCommand = "rg --color=never --files"
 
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+  " let g:which_key_map = {}
+  " let g:which_key_map.1 = 'which_key_ignore'
+
+  runtime macros/sandwich/keymap/surround.vim
 endfunction
