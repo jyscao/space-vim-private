@@ -13,8 +13,6 @@ set cmdheight=1
 "" autocommands
 autocmd TermOpen term://* startinsert     " enter terminal buffer in Insert instead of Normal mode
 autocmd FileType json syntax match Comment +\/\/.\+$+
-autocmd CmdwinEnter * nnoremap <CR> <CR>
-autocmd BufReadPost quickfix nnoremap <CR> <CR>
 
 
 
@@ -38,8 +36,8 @@ xnoremap , gEb
 xnoremap ; gE
 
 "" insert blank lines in normal mode
-nnoremap \| O<Esc>
-nnoremap <CR> o<Esc>
+nnoremap [<Space> O<Esc>
+nnoremap ]<Space> o<Esc>
 
 "" window switching
 nnoremap <C-h> <C-w>h
@@ -79,3 +77,14 @@ function! s:ppdb_define()
   endif
 endfunction
 command PpdbDefine :call s:ppdb_define()
+
+
+
+" Neovim's built-in LSP client
+if has('nvim-0.5')
+  lua <<EOF
+  require'lspconfig'.intelephense.setup{}
+  require'lspconfig'.pyls.setup{}
+  require'lspconfig'.vimls.setup{}
+EOF
+endif
