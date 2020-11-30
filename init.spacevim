@@ -11,6 +11,8 @@ let g:spacevim_localleader = '\'
 let g:spacevim_layers = [
       \ 'syntax-checking',
       \ 'better-defaults',
+      \ 'goyo',
+      \ 'markdown',
       \ 'code-snippets',
       \ 'editing',
       \ 'programming',
@@ -24,9 +26,6 @@ let g:spacevim_layers = [
 " TODO: +lang layers to replace w/ LSP: 'html', 'javascript', 'python', 'markdown', 'vue'
 " TODO: other layers to replace w/ LSP: 'syntax-checking',  'editing (?)', 'programming (?)'
 
-" TODO: try Neovim 0.5's built-in LSP -> neovim/nvim-lspconfig
-" let g:spacevim_lsp_engine = 'coc'
-
 " Uncomment the following line if your terminal(-emulator) supports true colors.
 let g:spacevim_enable_true_color = 1
 
@@ -39,6 +38,7 @@ let g:spacevim_excluded = [
       \ 'python-mode/python-mode',
       \ 'terryma/vim-multiple-cursors',
       \ 'tpope/vim-surround',
+      \ 'mzlogin/vim-markdown-toc',
       \ ]
 
 " TODO: properly configure lazy/non-lazy load plugins
@@ -96,6 +96,7 @@ function! UserConfig() abort
 
   " let g:which_key_map = {}
   " let g:which_key_map.1 = 'which_key_ignore'
+  " let g:which_key_map['*'] = 'which_key_ignore'
 
   runtime macros/sandwich/keymap/surround.vim
 endfunction
