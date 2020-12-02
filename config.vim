@@ -2,7 +2,7 @@
 
 "" settings
 set showcmd
-set showtabline=1
+set showtabline=0
 set smartcase
 set nowrap        " TODO: set nowrap by default for .md (and others?) files
 set inccommand=split
