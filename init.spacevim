@@ -63,6 +63,7 @@ function! UserInit() abort
   " Plug 'kana/vim-submode'
   " Plug 'kana/vim-operator-user'
   " Plug 'kana/vim-textobj-user'
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}   " requires newest version of Neovim
   Plug 'vim-ctrlspace/vim-ctrlspace'
 
   if has('nvim-0.5')
@@ -74,18 +75,17 @@ function! UserInit() abort
   Plug 'bronson/vim-visual-star-search'
   Plug 'machakann/vim-sandwich'
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
-  " Plug 'yssl/QFEnter'
+  Plug 'yssl/QFEnter'
   " Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-dadbod', {'on': 'DB'}
   " Plug 'kristijanhusak/vim-dadbod-ui'
   " Plug 'kristijanhusak/vim-dadbod-completion'
-  " Plug 'simnalamburt/vim-mundo'
+  Plug 'simnalamburt/vim-mundo'
   Plug 'wfxr/minimap.vim'
 
-  " language specifics
-  " Plug 'StanAngeloff/php.vim', {'for': 'php'}
-  " Plug 'jwalton512/vim-blade', {'for': 'blade'}
+  " LSP-less language specifics
+  Plug 'jwalton512/vim-blade', {'for': 'blade'}
 endfunction
 
 " TODO: checkout 'nvim-telescope/telescope.nvim' && https://github.com/nanotee/nvim-lua-guide

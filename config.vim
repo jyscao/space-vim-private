@@ -9,6 +9,8 @@ set inccommand=split
 set formatprg=par\ -w78s0
 set clipboard=unnamed
 set cmdheight=1
+set undofile  " for vim-mundo
+set undodir=~/.vim/undo
 
 "" autocommands
 autocmd TermOpen term://* startinsert     " enter terminal buffer in Insert instead of Normal mode
@@ -83,10 +85,27 @@ command PpdbDefine :call s:ppdb_define()
 " Neovim's built-in LSP client
 if has('nvim-0.5')
   lua <<EOF
-  require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.html.setup{}
+  require'lspconfig'.cssls.setup{}
+  require'lspconfig'.tsserver.setup{}
+  --require'lspconfig'.vuels.setup{}
+  require'lspconfig'.intelephense.setup{}
   require'lspconfig'.pyls.setup{}
-  require'lspconfig'.vimls.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.sumneko_lua.setup{}
+  require'lspconfig'.vimls.setup{}
+  require'lspconfig'.sqlls.setup{}
+  require'lspconfig'.jsonls.setup{}
+  require'lspconfig'.yamlls.setup{}
+  --require'lspconfig'.bashls.setup{}
+  --require'lspconfig'.dockerls.setup{}
+  --require'lspconfig'.texlab.setup{}
+  --require'lspconfig'.gdscript.setup{}
+  --require'lspconfig'.sourcekit.setup{}
+  --require'lspconfig'.elixirls.setup{}
 EOF
+
+" use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
 
 "" completion-nvim settings
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -95,9 +114,9 @@ set completeopt=menuone,noinsert,noselect   " set completeopt to have a better c
 set shortmess+=c  " avoid showing message extra message when using completion
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
 let g:completion_matching_smart_case = 1
-let g:completion_trigger_keyword_length = 3
+let g:completion_trigger_keyword_length = 2
 " let g:completion_sorting = "length"
 " let g:completion_timer_cycle = 200
 " let g:completion_trigger_character = ['.', '::']
-" let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_snippet = 'UltiSnips'
 endif
