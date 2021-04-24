@@ -72,6 +72,7 @@ function! UserInit() abort
   endif
 
   " key utilities
+  Plug 'vim-vdebug/vdebug'
   Plug 'bronson/vim-visual-star-search'
   Plug 'machakann/vim-sandwich'
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
@@ -103,6 +104,18 @@ function! UserConfig() abort
   " let g:which_key_map = {}
   " let g:which_key_map.1 = 'which_key_ignore'
   " let g:which_key_map['*'] = 'which_key_ignore'
+
+  "" Vdebug Options
+  if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+  endif
+  " let g:vdebug_options.server = "192.168.33.1"
+  let g:vdebug_options.port = 9003
+  let g:vdebug_options.on_close = "detach"
+  let g:vdebug_options.ide_key = "VDEBUG_NVIM"
+  let g:vdebug_options.debug_file = ""
+  let g:vdebug_options.debug_file_level = 1
+  let g:vdebug_options.path_maps = {"/var/www/kanguru": "/home/jyscao/kanguru/www"}
 
   runtime macros/sandwich/keymap/surround.vim
 endfunction
