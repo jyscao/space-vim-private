@@ -93,7 +93,7 @@ require'nvim-treesitter.configs'.setup {
       -- ["foo.bar"] = "Identifier",
     },
   },
-  incremental_selection = {
+  incremental_selection = {     -- TODO: learn how to use this module
     enable = true,
     keymaps = {
       init_selection    = "gnn",
