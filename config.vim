@@ -83,25 +83,10 @@ command PpdbDefine :call s:ppdb_define()
 
 
 " Neovim's built-in LSP client
-if has('nvim-0.5')
-  lua <<EOF
-  require'lspconfig'.html.setup{}
-  require'lspconfig'.cssls.setup{}
-  require'lspconfig'.tsserver.setup{}
-  --require'lspconfig'.vuels.setup{}
-  require'lspconfig'.intelephense.setup{}
-  require'lspconfig'.pyls.setup{}
-  require'lspconfig'.sumneko_lua.setup{}
-  require'lspconfig'.vimls.setup{}
-  require'lspconfig'.sqlls.setup{}
-  require'lspconfig'.jsonls.setup{}
-  require'lspconfig'.yamlls.setup{}
-  --require'lspconfig'.bashls.setup{}
-  --require'lspconfig'.dockerls.setup{}
-  --require'lspconfig'.texlab.setup{}
-  --require'lspconfig'.gdscript.setup{}
-  --require'lspconfig'.sourcekit.setup{}
-  --require'lspconfig'.elixirls.setup{}
+lua << EOF
+require'lspconfig'.intelephense.setup{}
+--FIXME: auto-completion is wack
+--require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
 EOF
 
 " use completion-nvim in every buffer
