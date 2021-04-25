@@ -26,12 +26,6 @@ cnoremap jk <Esc>
 tnoremap jk <C-\><C-n>
 
 "" better movements
-xnoremap H ^
-xnoremap L $
-nnoremap ^ H
-nnoremap $ L
-xnoremap ^ H
-xnoremap $ L
 nnoremap , gEb
 nnoremap ; gE
 xnoremap , gEb

@@ -34,6 +34,7 @@ let g:spacevim_enable_true_color = 1
 
 " Exclude plugins bundled by default with enabled layers
 let g:spacevim_excluded = [
+      \ 'w0rp/ale',
       \ 'sheerun/vim-polyglot',
       \ 'python-mode/python-mode',
       \ 'terryma/vim-multiple-cursors',
@@ -81,13 +82,13 @@ function! UserInit() abort
   " Plug 'kristijanhusak/vim-dadbod-ui'
   " Plug 'kristijanhusak/vim-dadbod-completion'
   Plug 'simnalamburt/vim-mundo'
-  Plug 'wfxr/minimap.vim'
 
   " LSP-less language specifics
   Plug 'jwalton512/vim-blade', {'for': 'blade'}
+  " Plug 'hashivim/vim-terraform', {'for': 'tf'}
 endfunction
 
-" TODO: checkout 'nvim-telescope/telescope.nvim' && https://github.com/nanotee/nvim-lua-guide
+
 
 " Override the default settings from space-vim as well as adding extras
 function! UserConfig() abort
@@ -95,7 +96,6 @@ function! UserConfig() abort
   let g:CtrlSpaceGlobCommand = "rg --color=never --files"
   let g:CtrlSpaceEnableFilesCache = 0
 
-  let g:minimap_auto_start = 1
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:markdown_fenced_languages = ['vim', 'help',]
 
