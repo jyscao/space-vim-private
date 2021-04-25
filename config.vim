@@ -83,19 +83,27 @@ require'lspconfig'.intelephense.setup{}
 --require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
 EOF
 
-" use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-"" completion-nvim settings
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-set completeopt=menuone,noinsert,noselect   " set completeopt to have a better completion experience
-set shortmess+=c  " avoid showing message extra message when using completion
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
-let g:completion_matching_smart_case = 1
-let g:completion_trigger_keyword_length = 2
-" let g:completion_sorting = "length"
-" let g:completion_timer_cycle = 200
-" let g:completion_trigger_character = ['.', '::']
-let g:completion_enable_snippet = 'UltiSnips'
-endif
+" tree-sitter config
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      -- ["foo.bar"] = "Identifier",
+    },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection    = "gnn",
+      node_incremental  = "grn",
+      scope_incremental = "grc",
+      node_decremental  = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
