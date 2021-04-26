@@ -76,11 +76,9 @@ command PpdbDefine :call s:ppdb_define()
 
 
 
-" Neovim's built-in LSP client
+"" Neovim built-in LSP client
 lua << EOF
-require'lspconfig'.intelephense.setup{}
---FIXME: auto-completion is wack
---require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.cssls.setup{}
@@ -94,7 +92,8 @@ require'lspconfig'.vimls.setup{}
 --require'lspconfig'.dockerls.setup{}
 EOF
 
-" tree-sitter config
+
+"" nvim-treesitter config
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -118,3 +117,22 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
+
+"" completion-nvim settings
+
+" " use completion-nvim in every buffer (?)
+" autocmd BufEnter * lua require'completion'.on_attach()
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+set completeopt=menuone,noinsert,noselect   " set completeopt to have a better completion experience
+set shortmess+=c  " avoid showing message extra message when using completion
+
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
+let g:completion_matching_smart_case = 1
+let g:completion_trigger_keyword_length = 2
+" let g:completion_sorting = "length"
+" let g:completion_timer_cycle = 200
+" let g:completion_trigger_character = ['.', '::']
+" let g:completion_enable_snippet = 'UltiSnips'
