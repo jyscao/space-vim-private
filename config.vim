@@ -99,12 +99,12 @@ EOF
 "" nvim-lspconfig (configs for Neovim's built-in LSP client)
 lua << EOF
 require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.pyright.setup{}
+require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 require'lspconfig'.html.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.vuels.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.vimls.setup{}
+require'lspconfig'.bashls.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.vimls.setup{on_attach=require'completion'.on_attach}
 
 --require'lspconfig'.yamlls.setup{}
 --require'lspconfig'.terraformls.setup{}
