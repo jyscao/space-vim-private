@@ -56,8 +56,8 @@ let g:sneak#absolute_dir = 1
 
 
 "" completion-nvim settings
-" " use completion-nvim in every buffer (?)
-" autocmd BufEnter * lua require'completion'.on_attach()
+" use completion-nvim in every buffer (?)
+autocmd BufEnter * lua require'completion'.on_attach()
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect   " set completeopt to have a better completion experience
@@ -65,7 +65,7 @@ set shortmess+=c  " avoid showing message extra message when using completion
 let g:completion_enable_snippet = 'snippets.nvim'
 " let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
 let g:completion_matching_smart_case = 1
-let g:completion_trigger_keyword_length = 2
+" let g:completion_trigger_keyword_length = 2
 " let g:completion_sorting = "length"
 " let g:completion_timer_cycle = 200
 " let g:completion_trigger_character = ['.', '::']
@@ -95,20 +95,22 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+" TODO: configure nvim-treesitter/playground
 
 
 "" nvim-lspconfig (configs for Neovim's built-in LSP client)
 lua << EOF
-require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.intelephense.setup{}
+require'lspconfig'.pyright.setup{}
 require'lspconfig'.html.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.vuels.setup{}
-require'lspconfig'.bashls.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.vimls.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.terraformls.setup{}
 
+--require'lspconfig'.sumneko_lua.setup{}
 --require'lspconfig'.yamlls.setup{}
---require'lspconfig'.terraformls.setup{}
 --require'lspconfig'.tflint.setup{}
 --require'lspconfig'.dockerls.setup{}
 EOF

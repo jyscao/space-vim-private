@@ -69,24 +69,28 @@ function! UserInit() abort
   " IDE-like core functionalities
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  " Plug 'nvim-treesitter/completion-treesitter'
+  Plug 'nvim-treesitter/playground'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/lsp-status.nvim'     " requires nerd-fonts to display properly
   Plug 'norcalli/snippets.nvim'
 
   " key utilities
   Plug 'vim-vdebug/vdebug'
+  Plug 'lambdalisue/gina.vim'
   Plug 'bronson/vim-visual-star-search'
   Plug 'machakann/vim-sandwich'
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
-  Plug 'yssl/QFEnter'
   " Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-eunuch'
-  Plug 'simnalamburt/vim-mundo'
 
-  " LSP-less language specifics
+  " conveniences
+  Plug 'tpope/vim-abolish'
+  Plug 'simnalamburt/vim-mundo'
+  Plug 'yssl/QFEnter'
+
+  " special filetypes
   Plug 'jwalton512/vim-blade', {'for': 'blade'}
-  " Plug 'hashivim/vim-terraform', {'for': 'tf'}
+  Plug 'hashivim/vim-terraform'
 endfunction
 
 
@@ -95,7 +99,7 @@ endfunction
 function! UserConfig() abort
   let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
   let g:CtrlSpaceGlobCommand = "rg --color=never --files"
-  let g:CtrlSpaceEnableFilesCache = 0
+  let g:CtrlSpaceEnableFilesCache = 1
 
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:markdown_fenced_languages = ['vim', 'help',]
