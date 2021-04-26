@@ -11,6 +11,7 @@ set clipboard=unnamed
 set cmdheight=1
 set undofile  " for vim-mundo
 set undodir=~/.vim/undo
+set iskeyword+=$  " workaround for completion-nvim + Intelephense (see: https://github.com/nvim-lua/completion-nvim/issues/252)
 
 "" autocommands
 autocmd TermOpen term://* startinsert     " enter terminal buffer in Insert instead of Normal mode
@@ -61,13 +62,13 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect   " set completeopt to have a better completion experience
 set shortmess+=c  " avoid showing message extra message when using completion
+let g:completion_enable_snippet = 'snippets.nvim'
 " let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
 let g:completion_matching_smart_case = 1
 let g:completion_trigger_keyword_length = 2
 " let g:completion_sorting = "length"
 " let g:completion_timer_cycle = 200
 " let g:completion_trigger_character = ['.', '::']
-" let g:completion_enable_snippet = 'UltiSnips'
 
 
 "" nvim-treesitter config
