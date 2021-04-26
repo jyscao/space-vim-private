@@ -66,6 +66,7 @@ function! UserInit() abort
   " Plug 'kana/vim-textobj-user'
   Plug 'vim-ctrlspace/vim-ctrlspace'
 
+  " IDE-like core functionalities
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " Plug 'nvim-treesitter/completion-treesitter'
@@ -80,9 +81,6 @@ function! UserInit() abort
   Plug 'yssl/QFEnter'
   " Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-dadbod', {'on': 'DB'}
-  " Plug 'kristijanhusak/vim-dadbod-ui'
-  " Plug 'kristijanhusak/vim-dadbod-completion'
   Plug 'simnalamburt/vim-mundo'
 
   " LSP-less language specifics

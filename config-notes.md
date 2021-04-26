@@ -40,6 +40,33 @@ EOF
 
 * wfxr/minimap.vim
 
+* Plug 'tpope/vim-dadbod', {'on': 'DB'}
+* " Plug 'kristijanhusak/vim-dadbod-ui'
+* " Plug 'kristijanhusak/vim-dadbod-completion'
+
+"" vim-dadbod set-up
+""" database for work
+function! s:ppdb_define()
+  call system("ip address show vpn_kanguru")
+  if v:shell_error == 0
+    let db_envs = map(readfile(glob("~/work-db.env")), "split(v:val, '=')")
+    let env_map = {}
+    for [env, val] in db_envs
+      let env_map[env] = val
+    endfor
+    let host = env_map['DB_HOST']
+    let user = env_map['DB_USERNAME']
+    let pass = env_map['DB_PASSWORD']
+    let g:ppdb = "mysql://".user.":".pass."@".host
+    echomsg "company DB ready for use"
+  else
+    echomsg "must connect to company VPN to access DB"
+  endif
+endfunction
+command PpdbDefine :call s:ppdb_define()
+
+
+
 
 
 
