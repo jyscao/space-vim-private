@@ -2,18 +2,18 @@
 
 ```viml
 lua <<EOF
-require'lspconfig'.html.setup{}
-require'lspconfig'.cssls.setup{}
++require'lspconfig'.html.setup{}
++require'lspconfig'.cssls.setup{}
 require'lspconfig'.tsserver.setup{}
---require'lspconfig'.vuels.setup{}
-require'lspconfig'.intelephense.setup{}
++--require'lspconfig'.vuels.setup{}
++require'lspconfig'.intelephense.setup{}
 require'lspconfig'.pyls.setup{}
 require'lspconfig'.sumneko_lua.setup{}
-require'lspconfig'.vimls.setup{}
++require'lspconfig'.vimls.setup{}
 require'lspconfig'.sqlls.setup{}
 require'lspconfig'.jsonls.setup{}
 require'lspconfig'.yamlls.setup{}
---require'lspconfig'.bashls.setup{}
++--require'lspconfig'.bashls.setup{}
 --require'lspconfig'.dockerls.setup{}
 --require'lspconfig'.texlab.setup{}
 --require'lspconfig'.gdscript.setup{}

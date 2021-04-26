@@ -81,6 +81,17 @@ lua << EOF
 require'lspconfig'.intelephense.setup{}
 --FIXME: auto-completion is wack
 --require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.html.setup{}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.vuels.setup{}
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.vimls.setup{}
+
+--require'lspconfig'.yamlls.setup{}
+--require'lspconfig'.terraformls.setup{}
+--require'lspconfig'.tflint.setup{}
+--require'lspconfig'.dockerls.setup{}
 EOF
 
 " tree-sitter config
