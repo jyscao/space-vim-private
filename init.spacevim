@@ -52,6 +52,8 @@ let g:non_lazy_load = []
 "   Layer 'airline'
 " endif
 
+let g:spacevim_core_git_plugin = 'gina'
+
 " to prevent Neovim from picking up Python3 executables from Conda
 let g:python3_host_prog = '/usr/bin/python3'
 
@@ -59,30 +61,33 @@ function! UserInit() abort
   " Add your own plugin via Plug command.
   Plug 'junegunn/seoul256.vim'
 
-  " foundational plugins
+  " " plugin libraries
   " Plug 'vim-jp/vital.vim'
   " Plug 'kana/vim-submode'
   " Plug 'kana/vim-operator-user'
-  " Plug 'kana/vim-textobj-user'
-  Plug 'vim-ctrlspace/vim-ctrlspace'
+  " Plug 'kana/vim-textobj-user'    " TODO: set-up & add 'Julian/vim-textobj-variable-segment'
 
-  " IDE-like core functionalities
+  " key utilities
+  Plug 'vim-ctrlspace/vim-ctrlspace'
+  Plug 'lambdalisue/gina.vim'
+  Plug 'norcalli/snippets.nvim'
+
+  " IDE core
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
+  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'    " TODO: configure & learn to use
+  " Plug 'nvim-treesitter/nvim-treesitter-refactor'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/lsp-status.nvim'     " requires nerd-fonts to display properly
-  Plug 'norcalli/snippets.nvim'
 
-  "" external sources for nvim-lua/completion-nvim
+  " external sources for nvim-lua/completion-nvim
   Plug 'steelsojka/completion-buffers'
   Plug 'nvim-treesitter/completion-treesitter'
   Plug 'aca/completion-tabnine', { 'do': './install.sh' }
   " Plug 'albertoCaroM/completion-tmux'
 
-  " key utilities
-  Plug 'vim-vdebug/vdebug'
-  Plug 'lambdalisue/gina.vim'
+  " extra tools & commands
   Plug 'bronson/vim-visual-star-search'
   Plug 'machakann/vim-sandwich'
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
@@ -90,12 +95,13 @@ function! UserInit() abort
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-scriptease'
 
-  " conveniences
+  " minor conveniences
   Plug 'yssl/QFEnter'
   Plug 'tpope/vim-abolish'
   Plug 'simnalamburt/vim-mundo'
 
-  " special filetypes
+  " language specifics
+  Plug 'vim-vdebug/vdebug'        " Xdebug client for PHP
   Plug 'jwalton512/vim-blade', {'for': 'blade'}
   Plug 'hashivim/vim-terraform'
 endfunction
