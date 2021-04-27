@@ -74,6 +74,12 @@ function! UserInit() abort
   Plug 'nvim-lua/lsp-status.nvim'     " requires nerd-fonts to display properly
   Plug 'norcalli/snippets.nvim'
 
+  "" external sources for nvim-lua/completion-nvim
+  Plug 'steelsojka/completion-buffers'
+  Plug 'nvim-treesitter/completion-treesitter'
+  Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+  " Plug 'albertoCaroM/completion-tmux'
+
   " key utilities
   Plug 'vim-vdebug/vdebug'
   Plug 'lambdalisue/gina.vim'
@@ -82,11 +88,12 @@ function! UserInit() abort
   Plug 'AndrewRadev/linediff.vim', {'on': 'Linediff'}
   " Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-scriptease'
 
   " conveniences
+  Plug 'yssl/QFEnter'
   Plug 'tpope/vim-abolish'
   Plug 'simnalamburt/vim-mundo'
-  Plug 'yssl/QFEnter'
 
   " special filetypes
   Plug 'jwalton512/vim-blade', {'for': 'blade'}

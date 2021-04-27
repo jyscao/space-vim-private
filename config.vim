@@ -69,6 +69,13 @@ let g:completion_matching_smart_case = 1
 " let g:completion_sorting = "length"
 " let g:completion_timer_cycle = 200
 " let g:completion_trigger_character = ['.', '::']
+imap <c-j> <Plug>(completion_next_source)
+imap <c-k> <Plug>(completion_prev_source)
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet', 'buffers', 'ts', 'tabnine']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
 
 
 "" nvim-treesitter config
