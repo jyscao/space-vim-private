@@ -52,14 +52,17 @@ let g:non_lazy_load = []
 "   Layer 'airline'
 " endif
 
-let g:spacevim_core_git_plugin = 'gina'
+" let g:spacevim_core_git_plugin = 'gina'
+let g:spacevim_core_git_plugin = 'fugitive'
 
 " to prevent Neovim from picking up Python3 executables from Conda
 let g:python3_host_prog = '/usr/bin/python3'
 
 function! UserInit() abort
-  " Add your own plugin via Plug command.
-  Plug 'junegunn/seoul256.vim'
+  " aesthetics
+  Plug 'folke/tokyonight.nvim'
+  Plug 'folke/lsp-colors.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " " plugin libraries
   " Plug 'vim-jp/vital.vim'
@@ -69,8 +72,11 @@ function! UserInit() abort
 
   " key utilities
   Plug 'vim-ctrlspace/vim-ctrlspace'
-  Plug 'lambdalisue/gina.vim'
   Plug 'norcalli/snippets.nvim'
+  " Plug 'lambdalisue/gina.vim'     " TODO: learn to use Gina & set-up keybindings
+  " Plug 'nvim-lua/popup.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-telescope/telescope.nvim'
 
   " IDE core
   Plug 'nvim-lua/completion-nvim'
@@ -80,11 +86,13 @@ function! UserInit() abort
   " Plug 'nvim-treesitter/nvim-treesitter-refactor'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/lsp-status.nvim'     " requires nerd-fonts to display properly
+  " Plug 'folke/which-key.nvim'
+  " Plug 'folke/lsp-trouble.nvim'
 
   " external sources for nvim-lua/completion-nvim
   Plug 'steelsojka/completion-buffers'
   Plug 'nvim-treesitter/completion-treesitter'
-  Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+  " Plug 'aca/completion-tabnine', { 'do': './install.sh' }   " seems to bug out often
   " Plug 'albertoCaroM/completion-tmux'
 
   " extra tools & commands
@@ -94,6 +102,9 @@ function! UserInit() abort
   " Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-scriptease'
+  " Plug 'ThePrimeagen/git-worktree.nvim'
+  " Plug 'vim-pandoc/vim-pandoc'
+  " Plug 'vim-pandoc/vim-pandoc-syntax'
 
   " minor conveniences
   Plug 'yssl/QFEnter'

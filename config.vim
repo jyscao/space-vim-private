@@ -1,4 +1,6 @@
 " General
+let g:tokyonight_style = 'night'
+colorscheme tokyonight
 
 "" settings
 set showcmd
@@ -72,7 +74,7 @@ let g:completion_matching_smart_case = 1
 imap <c-j> <Plug>(completion_next_source)
 imap <c-k> <Plug>(completion_prev_source)
 let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'snippet', 'buffers', 'ts', 'tabnine']},
+    \{'complete_items': ['lsp', 'snippet', 'buffers', 'ts',]},
     \{'mode': '<c-p>'},
     \{'mode': '<c-n>'}
 \]
@@ -121,3 +123,10 @@ require'lspconfig'.terraformls.setup{}
 --require'lspconfig'.tflint.setup{}
 --require'lspconfig'.dockerls.setup{}
 EOF
+
+
+" "" lsp-trouble.nvim
+" lua << EOF
+" require("trouble").setup{}
+" EOF
+" nnoremap <leader>xx <cmd>LspTroubleToggle<cr>
