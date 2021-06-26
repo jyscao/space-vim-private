@@ -109,6 +109,10 @@ EOF
 
 "" nvim-lspconfig (configs for Neovim's built-in LSP client)
 lua << EOF
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/home/jyscao/.local/bin/omnisharp-roslyn/run"
+require'lspconfig'.omnisharp.setup{ cmd = {omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid)}; }
+
 require'lspconfig'.intelephense.setup{}
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.html.setup{}

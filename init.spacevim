@@ -112,7 +112,7 @@ function! UserInit() abort
   Plug 'simnalamburt/vim-mundo'
 
   " language specifics
-  Plug 'vim-vdebug/vdebug'        " Xdebug client for PHP
+  Plug 'vim-vdebug/vdebug', {'for': 'php'}        " Xdebug client for PHP
   Plug 'jwalton512/vim-blade', {'for': 'blade'}
   Plug 'hashivim/vim-terraform'
 endfunction
