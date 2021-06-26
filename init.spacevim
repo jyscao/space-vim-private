@@ -75,7 +75,9 @@ function! UserInit() abort
   Plug 'norcalli/snippets.nvim'
   " Plug 'lambdalisue/gina.vim'     " TODO: learn to use Gina & set-up keybindings
   " Plug 'nvim-lua/popup.nvim'
-  " Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'sindrets/diffview.nvim'
+  Plug 'TimUntersberger/neogit'
   " Plug 'nvim-telescope/telescope.nvim'
 
   " IDE core
